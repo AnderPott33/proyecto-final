@@ -1,37 +1,63 @@
 <!DOCTYPE html>
+<!-- Define que el documento es HTML5 -->
 <html lang="es">
+<!-- Idioma principal del documento: español -->
 
 <head>
   <meta charset="UTF-8">
+  <!-- Codificación de caracteres: UTF-8 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Hace que la página sea responsive, ajustando el ancho según el dispositivo -->
   <title>Proyecto Final - Frontend</title>
+  <!-- Título que aparece en la pestaña del navegador -->
+  
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Carga TailwindCSS para estilos rápidos y utilitarios -->
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Carga Font Awesome para usar íconos -->
+  
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <!-- Estilos de Leaflet para mapas interactivos -->
+  
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <!-- Biblioteca Leaflet para mapas -->
+  
   <script src="./js/app.js" type="module"></script>
+  <!-- Tu archivo JavaScript principal, cargado como módulo -->
 </head>
 
 <body class="w-full min-h-screen relative">
+<!-- Cuerpo del documento con clases Tailwind: ancho completo, altura mínima de pantalla y posición relativa -->
 
   <div id="mapaFondo" class="absolute inset-0 z-0"></div>
+  <!-- Div que servirá como fondo del mapa; ocupa todo el contenedor y está en el fondo gracias a z-0 -->
 
   <div class="flex justify-center bg-[#001c6a] w-full p-1 text-white font-bold relative z-10">
+    <!-- Barra superior con fondo azul oscuro, texto blanco, centrado y con z-index sobre el mapa -->
     <h1 class="italic">Busque el país para obtener las informaciones</h1>
+    <!-- Título en cursiva dentro de la barra superior -->
   </div>
 
   <section class="w-full p-2 flex justify-center relative z-10">
+    <!-- Sección para la búsqueda de países, centrada y con padding -->
     <div class="relative w-[60%]">
+      <!-- Contenedor del input y botón con ancho del 60% -->
       <input id="paisBuscado" class="w-full p-2 pr-10 rounded-lg outline-none" type="text"
         placeholder="Busque por un país">
+      <!-- Campo de texto para ingresar el nombre del país -->
       <button id="buscarPais" class="hover:text-[#35b9ac] absolute right-2 top-1/2 -translate-y-1/2">
+        <!-- Botón de búsqueda posicionado dentro del input -->
         <i class="fa-solid fa-search"></i>
+        <!-- Ícono de lupa usando Font Awesome -->
       </button>
     </div>
   </section>
 
   <div class="relative w-full h-[80vh] mt-6 flex justify-end items-start z-10 px-4">
+    <!-- Contenedor para mostrar la información del país; ocupa 80% de la altura de la ventana -->
     <div id="informacionPais" class="w-[350px] max-h-full overflow-auto rounded-2xl shadow-2xl"></div>
+    <!-- Div donde se insertará la información del país buscado, con scroll si es necesario -->
   </div>
 
 </body>
