@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyecto Final - Frontend</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="./js/funciones.js" type="module"></script>
+</head>
+
+<body class="w-full min-h-screen relative">
+
+
+
+  <div class="flex justify-center bg-[#001c6a] w-full p-1 text-white font-bold relative z-10">
+    <h1 class="italic">Busque el país para obtener las informaciones</h1>
+  </div>
+
+  <section class="w-full p-2 flex justify-center relative z-10">
+    <div class="relative w-[60%]">
+      <input id="paisBuscado" class="w-full p-2 pr-10 rounded-lg outline-none" type="text"
+        placeholder="Busque por un país">
+      <button id="buscarPais" class="hover:text-[#35b9ac] absolute right-2 top-1/2 -translate-y-1/2">
+        <i class="fa-solid fa-search"></i>
+      </button>
+    </div>
+  </section>
+
+</body>
+
+</html>
