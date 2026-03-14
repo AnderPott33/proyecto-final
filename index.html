@@ -39,26 +39,24 @@
     <!-- Título en cursiva dentro de la barra superior -->
   </div>
 
-  <section class="w-full p-2 flex justify-center relative z-10">
-    <!-- Sección para la búsqueda de países, centrada y con padding -->
-    <div class="relative w-[60%]">
-      <!-- Contenedor del input y botón con ancho del 60% -->
-      <input id="paisBuscado" class="w-full p-2 pr-10 rounded-lg outline-none" type="text"
-        placeholder="Busque por un país">
-      <!-- Campo de texto para ingresar el nombre del país -->
-      <button id="buscarPais" class="hover:text-[#35b9ac] absolute right-2 top-1/2 -translate-y-1/2">
-        <!-- Botón de búsqueda posicionado dentro del input -->
-        <i class="fa-solid fa-search"></i>
-        <!-- Ícono de lupa usando Font Awesome -->
-      </button>
-    </div>
-  </section>
-
-  <div class="relative w-full h-[80vh] mt-6 flex justify-end items-start z-10 px-4">
-    <!-- Contenedor para mostrar la información del país; ocupa 80% de la altura de la ventana -->
-    <div id="informacionPais" class="w-[350px] max-h-full overflow-auto rounded-2xl shadow-2xl"></div>
-    <!-- Div donde se insertará la información del país buscado, con scroll si es necesario -->
+  <!-- Contenedor del input -->
+<section class="w-full p-2 flex justify-center relative z-10">
+  <div class="relative w-full sm:w-[60%]">
+    <!-- En pantallas pequeñas ocupa 100%, en sm+ ocupa 60% -->
+    <input id="paisBuscado" 
+           class="w-full p-2 pr-10 rounded-lg outline-none text-sm sm:text-base" 
+           type="text" placeholder="Busque por un país">
+    <button id="buscarPais" 
+            class="hover:text-[#35b9ac] absolute right-2 top-1/2 -translate-y-1/2 text-sm sm:text-base">
+      <i class="fa-solid fa-search"></i>
+    </button>
   </div>
+</section>
+
+<!-- Contenedor de información del país -->
+<div class="relative w-full h-[70vh] sm:h-[80vh] mt-6 flex justify-center sm:justify-end items-start z-10 px-2 sm:px-4">
+  <div id="informacionPais" class="w-full sm:w-[350px] max-h-full overflow-auto rounded-2xl shadow-2xl"></div>
+</div>
 
 </body>
 
