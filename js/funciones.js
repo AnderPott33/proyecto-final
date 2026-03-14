@@ -3,6 +3,19 @@
 // URL base de la API de países
 export const api = "https://restcountries.com/v3.1/name/";
 
+// Diccionario de correcciones de territorios especiales
+const correcciones = {
+    "United States Minor Outlying Islands": "Estados Unidos",
+    "Puerto Rico": "Estados Unidos",
+    "Guam": "Estados Unidos",
+    "American Samoa": "Estados Unidos",
+    "Northern Mariana Islands": "Estados Unidos",
+    "US Virgin Islands": "Estados Unidos",
+    "Taiwan": "Taiwán",
+    "Taiwan, Province of China": "Taiwán"
+    // Agrega más según necesidad
+};
+
 // Diccionario de regiones y subregiones en español
 const regiones = {
     "Europe": "Europa",
@@ -20,6 +33,7 @@ const subregiones = {
     "Central America": "América Central",
     "Caribbean": "Caribe",
     "South America": "América del Sur",
+    "North America": "América del Norte",
     "Northern Africa": "África del Norte",
     "Sub-Saharan Africa": "África Subsahariana",
     "Eastern Asia": "Asia Oriental",
@@ -33,6 +47,7 @@ const subregiones = {
 const monedas = {
     "Euro": "Euro",
     "United States dollar": "Dólar estadounidense",
+    "New Taiwan dollar": "Dólar taiwanés",
     "British pound": "Libra esterlina",
     "Japanese yen": "Yen japonés",
     "Argentine peso": "Peso argentino",
@@ -42,20 +57,22 @@ const monedas = {
     // agregar más según necesidad
 };
 
-// Diccionario de idiomas actualizado
+// Diccionario de idiomas en español
 const idiomas = {
-  "en": "Inglés",
-  "es": "Español",
-  "spa": "Español",
-  "fr": "Francés",
-  "pt": "Portugués",
-  "por": "Portugués",
-  "de": "Alemán",
-  "it": "Italiano",
-  "ja": "Japonés",
-  "zh": "Chino",
-  "ar": "Árabe",
-  "gn": "Guaraní"
+    "en": "Inglés",
+    "es": "Español",
+    "spa": "Español",
+    "Spanish": "Español",
+    "fr": "Francés",
+    "pt": "Portugués",
+    "por": "Portugués",
+    "de": "Alemán",
+    "it": "Italiano",
+    "ja": "Japonés",
+    "zh": "Chino",
+    "Chinese": "Chino",
+    "ar": "Árabe",
+    "gn": "Guaraní"
 };
 
 // Función principal para buscar país
@@ -67,16 +84,18 @@ export async function buscar(pais, mapaFondo, respuestaH) {
         const data = await response.json();
         const country = data[0];
 
-        // Nombre en español o en inglés si no existe
-        const nombreES = country.translations?.spa?.common || country.name.common;
+        // Nombre en español corregido por territorios especiales o traducción
+        const nombreES = correcciones[country.name.common] 
+                         || country.translations?.spa?.common 
+                         || country.name.common;
 
         // Moneda traducida
         const monedaAPI = Object.values(country.currencies)[0];
         const monedaES = monedas[monedaAPI.name] || monedaAPI.name;
 
         // Idiomas traducidos
-        const idiomasES = Object.keys(country.languages)
-            .map(code => idiomas[code] || country.languages[code])
+        const idiomasES = Object.values(country.languages)
+            .map(name => idiomas[name] || name)
             .join(", ");
 
         // Coordenadas
